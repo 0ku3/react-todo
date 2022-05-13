@@ -3,17 +3,16 @@ import "./styles.css";
 
 export const App = () => {
   const [todoText, setTodoText] = useState("");
-  const [incompleteTodos, setIncompleteTodos] = useState([
-    "ああああ",
-    "いいいい"
-  ]);
-  const [completeTodos, setCompleteTodos] = useState(["うううう"]);
+  const [incompleteTodos, setIncompleteTodos] = useState([]);
+  const [completeTodos, setCompleteTodos] = useState([]);
 
   const onChangeTodoText = (event) => setTodoText(event.target.value);
 
   const onClickAdd = () => {
+    if (todoText === "") return;
     const newTodos = [...incompleteTodos, todoText];
     setIncompleteTodos(newTodos);
+    setTodoText("");
   };
 
   const onClickDelete = (index) => {
